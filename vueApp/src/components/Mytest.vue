@@ -8,7 +8,14 @@
 			<li v-for="item in items">{{ item.title }}</li>
 		</ul>
 		<button v-on:click="greet('Hello world')">Say greeting</button><br>
-		<input type='text' v-on:keyup="pressKey"><br>
+		<input type='text' v-on:keyup="pressKey" v-on:keyup.enter="enterHit"><br>
+
+		<label>First Name: </label><input type="text" v-model="user.first_name"><br>
+
+		<label>Last Name: </label><input type="text" v-model="user.last_name"><br>
+
+		<h3>Hi {{fullname}}</h3>
+		<h2>{{msg}}</h2> 
 
 	</div>
 </template>
@@ -16,6 +23,12 @@
 <script>
 	export default {
 		name: 'my_test',
+		props: {
+			msg: {
+				default:"Foobar",
+				type: String
+			}
+		},
 		data() {
 			return {
 				title: 'hello world',
@@ -38,6 +51,14 @@
 			pressKey: function(event) {
 				console.log("pressed!!")
 				console.log(event.target.value)
+			},
+			enterHit: function(event) {
+				console.log("enter hit!!")
+			}
+		},
+		computed: {
+			fullname: function() {
+				return this.user.first_name + ' ' + this.user.last_name
 			}
 		}
 	}

@@ -1,18 +1,22 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <Mytest/> 
+    <!--
+    <Mytest msg="This is passed as props"/> 
+  -->
+    <Users />
   </div>
 </template>
 
 <script>
 //import HelloWorld from './components/HelloWorld'
 import Mytest from './components/Mytest'
+import Users from './components/Users'
 export default {
   name: 'App',
   components: { //add your component here
     //HelloWorld
-    Mytest 
+    Mytest, Users
   }
 }
 </script>
